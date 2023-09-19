@@ -1,3 +1,4 @@
 # ExpenseTracker
 
-Some  text
+Working on the react components sidebar and incomes dashboard
+

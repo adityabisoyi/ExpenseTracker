@@ -27,4 +27,4 @@ const medical = <i className="fa-solid fa-briefcase-medical"></i>
 const tv = <i className="fa-solid fa-tv"></i>
 const circle = <i className="fa-solid fa-circle-dot"></i>
 
-export default { accounts, bitcoin, book, calender, card, categories, circle, clothing, comment, dashboard, expenses, food, freelance, logout, medical, money, piggy, plus, rupee, settings, signout, stocks, takeaway, transactions, trash, trend, tv, users  }
+export  { accounts, bitcoin, book, calender, card, categories, circle, clothing, comment, dashboard, expenses, food, freelance, logout, medical, money, piggy, plus, rupee, settings, signout, stocks, takeaway, transactions, trash, trend, tv, users  }

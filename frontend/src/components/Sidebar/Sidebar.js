@@ -4,7 +4,7 @@ import avatar from '../../images/avatar.svg'
 import { signout } from '../../utils/icons'
 import { menuItems } from '../../utils/menuItems'
 
-function Sidebar() {
+function Sidebar({active,setActive}) {
     return (
         <SidebarStyled>
             <div className='user-con'>
@@ -16,7 +16,10 @@ function Sidebar() {
             </div>
             <ul className='menu-items'>
                 {menuItems.map((item) =>{
-                    return <li key={item.id}>
+                    return <li key={item.id} 
+                    onClick={()=>setActive(item.id)}
+                        className={active === item.id ? 'active' : ''}>
+
                     {item.icon}
                     <span>{item.title}</span>
                     </li>

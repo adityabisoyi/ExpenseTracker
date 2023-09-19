@@ -7,7 +7,7 @@ const logout = <i className="fa-solid fa-sign-out"></i>
 const trend = <i className="fa-solid fa-money-bill-trend-up"></i>
 const expenses = <i className="fa-solid fa-money-bill-transfer"></i>
 const money = <i className="fa-solid fa-money-bill"></i>
-const freelance = <i className ="fa-solid fa-earth-americas"></i>
+const freelance = <i class="fa-solid fa-house-laptop"></i>
 const stocks = <i className="fa-solid fa-arrow-trend-up"></i>
 const bitcoin = <i className="fa-brands fa-bitcoin"></i>
 const piggy = <i className="fa-solid fa-piggy-bank"></i>
@@ -26,5 +26,7 @@ const food = <i className="fa-solid fa-bowl-food"></i>
 const medical = <i className="fa-solid fa-briefcase-medical"></i>
 const tv = <i className="fa-solid fa-tv"></i>
 const circle = <i className="fa-solid fa-circle-dot"></i>
+const groceries = <i class="fa-solid fa-cart-shopping"></i>
+const travelling = <i class="fa-solid fa-plane"></i>
 
-export  { accounts, bitcoin, book, calender, card, categories, circle, clothing, comment, dashboard, expenses, food, freelance, logout, medical, money, piggy, plus, rupee, settings, signout, stocks, takeaway, transactions, trash, trend, tv, users  }
+export { accounts, bitcoin, book, calender, card, categories, circle, clothing, comment, dashboard, expenses, food, freelance, logout, medical, money, piggy, plus, rupee, settings, signout, stocks, takeaway, transactions, trash, trend, tv, users, groceries, travelling }

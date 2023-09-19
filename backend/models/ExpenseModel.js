@@ -32,12 +32,6 @@ const ExpenseSchema = new mongoose.Schema({
     }
 })
 
-<<<<<<< HEAD
-module.exports = mongoose.model('Expense', ExpenseSchema)
-
-//copy pasted from income edit accordingly
-=======
 const Expense = mongoose.model('Expense', ExpenseSchema);
 
 module.exports = Expense;
->>>>>>> e3440dc98aac92f7d668fa18dfea7b101456c4fb

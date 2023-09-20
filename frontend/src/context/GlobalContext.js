@@ -1,3 +1,4 @@
+
 import React, { useContext, useState } from 'react'
 import axios from 'axios'
 
@@ -39,6 +40,7 @@ const GlobalProvider = ({children}) => {
     }
 
 
+
     const addExpense = async (expense) => {
         const response = await axios.post(`${BASE_URL}add-expense`, expense)
             .catch((err) =>{
@@ -48,6 +50,7 @@ const GlobalProvider = ({children}) => {
     }
 
     const getExpense = async () => {
+
         const response = await axios.get(`${BASE_URL}get-expenses`)
         setExpenses(response.data)
         console.log(response.data)

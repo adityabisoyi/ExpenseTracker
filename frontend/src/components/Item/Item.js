@@ -2,7 +2,7 @@ import React from 'react'
 import { money, freelance, stocks, users, bitcoin, card, piggy, book, food, medical, tv, groceries, clothing, travelling, circle, rupee, comment, calender, trash } from '../../utils/icons'
 import styled from 'styled-components'
 import { dateFormat } from '../../utils/dateFormat'
-import Button from '../Button/Button'
+import Button from '../button/Button'
 
 function Item({ id, title, amount, category, type, description, deleteItem, indicatorColor, date }) {
 

@@ -7,6 +7,7 @@ import Income from './components/Income/Income'
 import Expenses from './components/Expense/Expense';
 import { useGlobalContext } from './context/GlobalContext';
 
+
 function App() {
 
     const [active, setActive] = useState(1)
@@ -27,6 +28,25 @@ function App() {
             default: 
               return <Dashboard />
           }
+    }
+    const [active, setActive] = React.useState(1)
+
+    const global = useGlobalContext()
+    console.log(global);
+    const displayData = () =>{
+        switch(active){
+            case 1:
+                return <Dashboard/> 
+            case 2:
+                return <Dashboard/>
+            case 3:
+                return <Income/>
+            case 4:
+                return <Expense/>
+            default:
+                return <Dashboard/> 
+
+        }
     }
 
     return (

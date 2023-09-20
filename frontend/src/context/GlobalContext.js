@@ -1,41 +1,38 @@
-import React, { useContext, useState } from "react"
+
+import React, { useContext, useState } from 'react'
 import axios from 'axios'
 
-
-const BASE_URL = "http://localhost:5000/api/v1/";
-
+const BASE_URL = "http://localhost:5000/api/v1/"
 
 const GlobalContext = React.createContext()
 
-export const GlobalProvider = ({ children }) => {
-
+const GlobalProvider = ({children}) => {
     const [incomes, setIncomes] = useState([])
     const [expenses, setExpenses] = useState([])
-    const [error, setError] = useState(null)
+    const [error, setError] = useState([])
 
-    //calculate incomes
     const addIncome = async (income) => {
-        const response = await axios.post(`${BASE_URL}add-income`, income)
-            .catch((err) => {
-                setError(err.response.data.message)
-            })
-        getIncomes()
+        const responses = await axios.post(`${BASE_URL}add-income`, income)
+        .catch((err) => {
+            setError(err.responses.data.message)
+        })
+        getIncome()
     }
 
-    const getIncomes = async () => {
-        const response = await axios.get(`${BASE_URL}get-incomes`)
+    const getIncome = async (income) => {
+        const response = await axios.get(`${BASE_URL}get-income`)
         setIncomes(response.data)
         console.log(response.data)
     }
 
     const deleteIncome = async (id) => {
-        const res = await axios.delete(`${BASE_URL}delete-income/${id}`)
-        getIncomes()
+        const res  = await axios.delete(`${BASE_URL}delete-income/${id}`)
+        getIncome()
     }
 
     const totalIncome = () => {
         let totalIncome = 0;
-        incomes.forEach((income) => {
+        incomes.forEach((income) =>{
             totalIncome = totalIncome + income.amount
         })
 
@@ -43,38 +40,38 @@ export const GlobalProvider = ({ children }) => {
     }
 
 
-    //calculate incomes
-    const addExpense = async (income) => {
-        const response = await axios.post(`${BASE_URL}add-expense`, income)
-            .catch((err) => {
+
+    const addExpense = async (expense) => {
+        const response = await axios.post(`${BASE_URL}add-expense`, expense)
+            .catch((err) =>{
                 setError(err.response.data.message)
             })
-        getExpenses()
+        getExpense()
     }
 
-    const getExpenses = async () => {
+    const getExpense = async () => {
+
         const response = await axios.get(`${BASE_URL}get-expenses`)
         setExpenses(response.data)
         console.log(response.data)
     }
 
     const deleteExpense = async (id) => {
-        const res = await axios.delete(`${BASE_URL}delete-expense/${id}`)
-        getExpenses()
+        const res  = await axios.delete(`${BASE_URL}delete-expense/${id}`)
+        getExpense()
     }
 
-    const totalExpenses = () => {
-        let totalIncome = 0;
-        expenses.forEach((income) => {
-            totalIncome = totalIncome + income.amount
+    const totalExpense = () => {
+        let totalExpense = 0;
+        expenses.forEach((expense) =>{
+            totalExpense = totalExpense + expense.amount
         })
 
-        return totalIncome;
+        return totalExpense;
     }
 
-
     const totalBalance = () => {
-        return totalIncome() - totalExpenses()
+        return totalIncome() - totalExpense()
     }
 
     const transactionHistory = () => {
@@ -83,22 +80,22 @@ export const GlobalProvider = ({ children }) => {
             return new Date(b.createdAt) - new Date(a.createdAt)
         })
 
-        return history.slice(0, 3)
+        return history.slice(0, 5)
     }
 
 
     return (
         <GlobalContext.Provider value={{
             addIncome,
-            getIncomes,
+            getIncome,
             incomes,
             deleteIncome,
             expenses,
             totalIncome,
             addExpense,
-            getExpenses,
+            getExpense,
             deleteExpense,
-            totalExpenses,
+            totalExpense,
             totalBalance,
             transactionHistory,
             error,
@@ -109,6 +106,8 @@ export const GlobalProvider = ({ children }) => {
     )
 }
 
-export const useGlobalContext = () => {
+const useGlobalContext = () =>{
     return useContext(GlobalContext)
 }
+
+export { GlobalProvider, useGlobalContext }

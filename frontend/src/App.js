@@ -1,16 +1,33 @@
+import React, { useState } from 'react';
 import styled from "styled-components";
 import { MainLayout } from "./styles/Layout";
-import Sidebar from "./components/Sidebar/Sidebar";
-import Dashboard from "./components/Dashboard/Dashboard";
-import Item from "./components/Item/Item";
-import React,{ useState } from 'react';
-import Income from "./components/Income/Income";
-import Expense from "./components/Expense/Expense";
-import { useGlobalContext } from "./context/GlobalContext";
+import Sidebar from './components/Sidebar/Sidebar'
+import Dashboard from './components/Dashboard/Dashboard';
+import Income from './components/Income/Income'
+import Expenses from './components/Expense/Expense';
+import { useGlobalContext } from './context/GlobalContext';
+
 
 function App() {
-    const loadBody = () => {
 
+    const [active, setActive] = useState(1)
+
+    const global = useGlobalContext()
+    console.log(global);
+
+    const loadBody = () => {
+        switch(active){
+            case 1:
+              return <Dashboard />
+            case 2:
+              return <Dashboard />
+            case 3:
+              return <Income />
+            case 4: 
+              return <Expenses />
+            default: 
+              return <Dashboard />
+          }
     }
     const [active, setActive] = React.useState(1)
 
@@ -35,12 +52,9 @@ function App() {
     return (
         <AppStyled className="App">
             <MainLayout>
-                <Sidebar active = {active} setActive = {setActive} />
+                <Sidebar active={active} setActive={setActive} />
                 <main>
-                    {displayData()}
-                    {/* <Dashboard />
-                    <Item />
-                    {loadBody()} */}
+                    {loadBody()}
                 </main>
             </MainLayout>
         </AppStyled>

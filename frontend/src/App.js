@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from "styled-components";
 import { MainLayout } from "./styles/Layout";
 import Sidebar from './components/Sidebar/Sidebar'
 import Dashboard from './components/Dashboard/Dashboard';
 import Income from './components/Income/Income'
 import Expenses from './components/Expense/Expense';
-import { useGlobalContext } from './context/GlobalContext';
+import { GlobalContext } from './context/GlobalContext';
 
 function App() {
 
     const [active, setActive] = useState(1)
 
-    const global = useGlobalContext()
+    const global = useContext(GlobalContext);
     console.log(global);
 
     const loadBody = () => {

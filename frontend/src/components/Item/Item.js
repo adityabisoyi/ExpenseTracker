@@ -2,7 +2,7 @@ import React from 'react'
 import { money, freelance, stocks, users, bitcoin, card, piggy, book, food, medical, tv, groceries, clothing, travelling, circle, rupee, comment, calender, trash } from '../../utils/icons'
 import styled from 'styled-components'
 import { dateFormat } from '../../utils/dateFormat'
-import Button from '../button/Button'
+import Button from '../Button/Button'
 
 function Item({ id, title, amount, category, type, description, deleteItem, indicatorColor, date }) {
 
@@ -35,7 +35,7 @@ function Item({ id, title, amount, category, type, description, deleteItem, indi
     }
 
     const expenseCategory = () => {
-        switch(category) {
+        switch(category.toLowerCase()) {
             case "eductaion" : 
                 return book;
 
@@ -61,7 +61,7 @@ function Item({ id, title, amount, category, type, description, deleteItem, indi
                 return circle;
 
             default :
-                return ''
+                return 'circle'
         }
     }
 

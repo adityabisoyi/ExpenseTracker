@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import avatar from '../../images/avatar.svg'
+import avatar from '../../images/profile.jpg'
 import { signout } from '../../utils/icons'
 import { menuItems } from '../../utils/menuItems'
 
@@ -52,6 +52,7 @@ const SidebarStyled = styled.div`
         display: flex;
         align-items: center;
         gap: 1rem;
+        font-size: smaller;
         img{
             width: 80px;
             height: 80px;
@@ -85,6 +86,7 @@ const SidebarStyled = styled.div`
             color: rgba(34, 34, 96, .6);
             padding-left: 1rem;
             position: relative;
+            font-size: 0.8em;
             i{
                 color: rgba(34, 34, 96, 0.6);
                 font-size: 1.4rem;
@@ -108,6 +110,10 @@ const SidebarStyled = styled.div`
             background: #222260;
             border-radius: 0 10px 10px 0;
         }
+    }
+    .bottom-nav li {
+        font-size: 0.9em;
+        margin-left: 1em;
     }
 
 `

@@ -6,20 +6,21 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Income from './components/Income/Income'
 import Expenses from './components/Expense/Expense';
 import { GlobalContext } from './context/GlobalContext';
+import RecentTransactions from './components/Recent/RecentTransactions';
 
 function App() {
 
     const [active, setActive] = useState(1)
 
     const global = useContext(GlobalContext);
-    console.log(global);
+    // console.log(global);
 
     const loadBody = () => {
         switch(active){
             case 1:
               return <Dashboard />
             case 2:
-              return <Dashboard />
+              return <RecentTransactions />
             case 3:
               return <Income />
             case 4: 

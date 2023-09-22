@@ -24,6 +24,7 @@ function IncomeForm() {
     }
 
     const handleSubmit = e => {
+        console.log("Hello")
         e.preventDefault()
         addIncome(inputState)
         setInputState({
@@ -43,7 +44,7 @@ function IncomeForm() {
                     type="text" 
                     value={title}
                     name={'title'} 
-                    placeholder="Salary Title"
+                    placeholder="Income Title"
                     onChange={handleInput('title')}
                 />
             </div>
@@ -51,12 +52,13 @@ function IncomeForm() {
                 <input value={amount}  
                     type="text" 
                     name={'amount'} 
-                    placeholder={'Salary Amount'}
+                    placeholder={'Income Amount'}
                     onChange={handleInput('amount')} 
                 />
             </div>
             <div className="input-control">
-                <DatePicker 
+                <DatePicker
+                    wrapperClassName="datePicker"
                     id='date'
                     placeholderText='Enter A Date'
                     selected={date}
@@ -71,16 +73,15 @@ function IncomeForm() {
                     <option value=""  disabled >Select Option</option>
                     <option value="salary">Salary</option>
                     <option value="freelancing">Freelancing</option>
-                    <option value="investments">Investiments</option>
+                    <option value="investments">Investments</option>
                     <option value="stocks">Stocks</option>
-                    <option value="bitcoin">Bitcoin</option>
+                    <option value="crypto">Crypto</option>
                     <option value="bank">Bank Transfer</option>  
-                    <option value="youtube">Youtube</option>  
                     <option value="other">Other</option>  
                 </select>
             </div>
             <div className="input-control">
-                <textarea name="description" value={description} placeholder='Add A Reference' id="description" cols="30" rows="4" onChange={handleInput('description')}></textarea>
+                <textarea name="description" value={description} placeholder='Description' id="description" cols="30" rows="4" onChange={handleInput('description')}></textarea>
             </div>
             <div className="submit-btn">
                 <Button 
@@ -96,7 +97,7 @@ function IncomeForm() {
     )
 }
 
-const IncomeFormStyled = styled.div`
+const IncomeFormStyled = styled.form`
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -121,17 +122,22 @@ const IncomeFormStyled = styled.div`
             width: 100%;
         }
     }
+    .datePicker {
+        width: 100%;
+    }
 
     .selects{
         display: flex;
         justify-content: flex-end;
         select{
             color: rgba(34, 34, 96, 0.4);
+            width: 100% !important;
             &:focus, &:active{
                 color: rgba(34, 34, 96, 1);
             }
         }
     }
+
 
     .submit-btn{
         button{

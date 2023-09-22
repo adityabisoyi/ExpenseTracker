@@ -35,9 +35,13 @@ const getExpense = async (req, res) => {
 
 const deleteExpense = async (req, res) => {
     const {id} = req.params;
-    const expense = await Expense.findById(id);
-    
-    res.status(200).json(expense)
+    Expense.findByIdAndDelete(id)
+        .then((income) =>{
+            res.status(200).json({message: 'Expense Deleted'})
+        })
+        .catch((err) =>{
+            res.status(500).json({message: 'Server Error'})
+        })
 }
 
 

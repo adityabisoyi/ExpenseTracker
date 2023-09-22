@@ -16,27 +16,27 @@ function Expense() {
     return (
         <ExpenseStyled>
             <InnerLayout>
-                <h1>Expense</h1>
-
-                {/* <ExpenseForm/> */}
-                <div className="incomes">
-                    {expense.map((expense) => {
-                        const {_id, title, amount, date, category, description, type} = expense;
-                        
-                        console.log(expense)
-                        return <Item
-                            key={_id}
-                            id={_id} 
-                            title={title} 
-                            description={description} 
-                            amount={amount} 
-                            date={date} 
-                            type={type}
-                            category={category} 
-                            indicatorColor="var(--color-green)"
-                            deleteItem={deleteExpense}
-                        />
-                    })}
+            <div className="income-content">
+                    <div className="form-container">
+                        <ExpenseForm />
+                    </div>
+                    <div className="incomes">
+                        {expense.map((expense) => {
+                            const {_id, title, amount, date, category, description, type} = expense;
+                            return <Item
+                                key={_id}
+                                id={_id} 
+                                title={title} 
+                                description={description} 
+                                amount={amount} 
+                                date={date} 
+                                type={type}
+                                category={category} 
+                                indicatorColor="var(--color-green)"
+                                deleteItem={deleteExpense}
+                            />
+                        })}
+                    </div>
                 </div>
             </InnerLayout>
         </ExpenseStyled>
@@ -47,6 +47,8 @@ function Expense() {
 const ExpenseStyled = styled.div`
     display: flex;
     overflow: auto;
+    font-size: 0.8em;
+
     .total-income{
         display: flex;
         justify-content: center;

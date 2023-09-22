@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 import { useGlobalContext } from '../../context/GlobalContext';
 import Button from '../Button/Button';
 import { plus } from '../../utils/icons';
@@ -35,7 +36,7 @@ function ExpenseForm() {
     }
 
   return (
-    <ExpenseFormStyled onSubmit={handleSubmit}>
+        <ExpenseFormStyled onSubmit={handleSubmit}>
             {error && <p className='error'>{error}</p>}
             <div className="input-control">
                 <input 
@@ -55,7 +56,8 @@ function ExpenseForm() {
                 />
             </div>
             <div className="input-control">
-                <DatePicker 
+                <DatePicker
+                    wrapperClassName="datePicker"
                     id='date'
                     placeholderText='Enter A Date'
                     selected={date}
@@ -67,19 +69,19 @@ function ExpenseForm() {
             </div>
             <div className="selects input-control">
                 <select required value={category} name="category" id="category" onChange={handleInput('category')}>
-                    <option value="" disabled >Select Option</option>
+                    <option value="" disabled >Select Category</option>
+                    <option value="food">Food</option>
                     <option value="education">Education</option>
                     <option value="groceries">Groceries</option>
                     <option value="health">Health</option>
                     <option value="subscriptions">Subscriptions</option>
-                    <option value="takeaways">Takeaways</option>
                     <option value="clothing">Clothing</option>  
                     <option value="travelling">Travelling</option>  
                     <option value="other">Other</option>  
                 </select>
             </div>
             <div className="input-control">
-                <textarea name="description" value={description} placeholder='Add A Reference' id="description" cols="30" rows="4" onChange={handleInput('description')}></textarea>
+                <textarea name="description" value={description} placeholder='Description' id="description" cols="30" rows="4" onChange={handleInput('description')}></textarea>
             </div>
             <div className="submit-btn">
                 <Button 
@@ -120,16 +122,25 @@ const ExpenseFormStyled = styled.form`
             width: 100%;
         }
     }
+    .datePicker {
+        width: 100%;
+    }
 
     .selects{
         display: flex;
         justify-content: flex-end;
         select{
             color: rgba(34, 34, 96, 0.4);
+            width: 100%;
             &:focus, &:active{
                 color: rgba(34, 34, 96, 1);
             }
         }
+    }
+
+    .error {
+        color: red;
+        margin-left: 10px;
     }
 
     .submit-btn{

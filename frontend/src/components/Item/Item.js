@@ -76,7 +76,7 @@ function Item({ id, title, amount, category, type, description, deleteItem, indi
                     <h5>{title}</h5>
                     <div className='inner-content'>
                         <div className='text'>
-                            <p>{rupee} {amount}</p>
+                            <p>{rupee} {Intl.NumberFormat('en-IN').format(amount.toFixed(2))}</p>
                             <p>{calender} {dateFormat(date)}</p>
                             <p>{comment} {description}</p> 
                         </div>

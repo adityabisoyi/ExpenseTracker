@@ -1,20 +1,40 @@
+import React, { useContext, useState } from 'react';
 import styled from "styled-components";
 import { MainLayout } from "./styles/Layout";
-import Sidebar from "./components/Sidebar/Sidebar";
-import Dashboard from "./components/Dashboard/Dashboard";
+import Sidebar from './components/Sidebar/Sidebar'
+import Dashboard from './components/Dashboard/Dashboard';
+import Income from './components/Income/Income'
+import Expenses from './components/Expense/Expense';
+import { GlobalContext } from './context/GlobalContext';
+import RecentTransactions from './components/Recent/RecentTransactions';
 
 function App() {
-    const loadBody = () => {
 
+    const [active, setActive] = useState(1)
+
+    const global = useContext(GlobalContext);
+    
+    const loadBody = () => {
+        switch(active){
+            case 1:
+              return <Dashboard />
+            case 2:
+              return <RecentTransactions />
+            case 3:
+              return <Income />
+            case 4: 
+              return <Expenses />
+            default: 
+              return <Dashboard />
+          }
     }
 
     return (
         <AppStyled className="App">
             <MainLayout>
-                <Sidebar/>
+                <Sidebar active={active} setActive={setActive} />
                 <main>
-                    <Dashboard/>
-                    {/* {loadBody()} */}
+                    {loadBody()}
                 </main>
             </MainLayout>
         </AppStyled>
@@ -23,17 +43,19 @@ function App() {
 
 const AppStyled = styled.div`
     height: 100vh;
-    background-color: #1C1E2D;
+    background-image: url(${props => props.bg});
     position: relative;
-
-    main {
+    main{
         flex: 1;
-        background: #151725;
-        border-radius: 20px;
+        background: rgba(252, 246, 249, 0.78);
+        border: 3px solid #FFFFFF;
+        backdrop-filter: blur(4.5px);
+        border-radius: 32px;
+        overflow-x: hidden;
         padding: 1em;
-        background: linear-gradient(145deg, #131521, #161928);
-        box-shadow: 20px 20px 60px #12141f,
-                    -20px -20px 60px #181a2b;
+        &::-webkit-scrollbar{
+            width: 0;
+        }
     }
 `
 

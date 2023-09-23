@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useGlobalContext } from '../../context/GlobalContext'
 import styled from 'styled-components'
 import { dateFormat } from '../../utils/dateFormat'
 
 function RecentTransactions() {
-    const {allTransactions} = useGlobalContext()
+    const {allTransactions, getExpense, getIncome } = useGlobalContext()
 
+    useEffect(() =>{
+        getExpense()
+        getIncome()
+    }, [])
     const [...history] = allTransactions()
 
     return (
@@ -30,7 +34,7 @@ function RecentTransactions() {
                             color: type === 'expense' ? 'red' : 'var(--color-green)'
                         }}>
                             {
-                                type === 'expense' ? `-${amount <= 0 ? 0 : amount}` : `+${amount <= 0 ? 0: amount}`
+                                type === 'expense' ? `- ₹ ${amount <= 0 ? 0 : Intl.NumberFormat('en-IN').format(amount.toFixed(2))}` : `+ ₹ ${amount <= 0 ? 0: Intl.NumberFormat('en-IN').format(amount.toFixed(2))}`
                             }
                         </p>
                     </div>

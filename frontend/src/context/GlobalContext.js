@@ -73,8 +73,8 @@ const GlobalProvider = ({children}) => {
         return totalIncome() - totalExpense()
     }
 
+    const history = [...income, ...expense]
     const transactionHistory = () => {
-        const history = [...income, ...expense]
         history.sort((a, b) => {
             return new Date(b.createdAt) - new Date(a.createdAt)
         })
@@ -83,9 +83,9 @@ const GlobalProvider = ({children}) => {
     }
 
     const allTransactions = () => {
-        const history = [...income, ...expense]
+        // const history = [...income, ...expense]
         history.sort((b, a) => {
-            return -1*(new Date(b.createdAt) - new Date(a.createdAt))
+            return -1*(new Date(b.date) - new Date(a.date))
         })
 
         return history.reverse()
@@ -108,7 +108,8 @@ const GlobalProvider = ({children}) => {
             transactionHistory,
             error,
             setError,
-            allTransactions
+            allTransactions,
+            history
         }}>
         {children}
         </GlobalContext.Provider>

@@ -1,16 +1,12 @@
-import React, { useEffect } from 'react'
-import { useGlobalContext } from '../../context/GlobalContext'
+import React from 'react'
 import styled from 'styled-components'
-import { dateFormat } from '../../utils/dateFormat'
+import { useGlobalContext } from '../../context/GlobalContext';
+import { dateFormat } from '../../utils/dateFormat';
 
-function RecentTransactions() {
-    const {allTransactions, getExpense, getIncome } = useGlobalContext()
+function History() {
+    const {transactionHistory} = useGlobalContext()
 
-    useEffect(() =>{
-        getExpense()
-        getIncome()
-    }, [])
-    const [...history] = allTransactions()
+    const [...history] = transactionHistory()
 
     return (
         <HistoryStyled>
@@ -24,11 +20,11 @@ function RecentTransactions() {
                         }}>
                             {title}
                         </p>
-                        <p style={{
+                        {/* <p style={{
                             color: type === 'expense' ? 'red' : 'var(--color-green)'
                         }}>
                             {dateFormat(date)}
-                        </p>
+                        </p> */}
 
                         <p style={{
                             color: type === 'expense' ? 'red' : 'var(--color-green)'
@@ -60,4 +56,4 @@ const HistoryStyled = styled.div`
     }
 `;
 
-export default RecentTransactions
+export default History

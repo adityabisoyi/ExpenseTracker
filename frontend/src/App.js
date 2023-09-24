@@ -13,8 +13,7 @@ function App() {
     const [active, setActive] = useState(1)
 
     const global = useContext(GlobalContext);
-    // console.log(global);
-
+    
     const loadBody = () => {
         switch(active){
             case 1:

@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from "styled-components";
 import { MainLayout } from "./styles/Layout";
 import Sidebar from './components/Sidebar/Sidebar'
 import Dashboard from './components/Dashboard/Dashboard';
 import Income from './components/Income/Income'
 import Expenses from './components/Expense/Expense';
-import { useGlobalContext } from './context/GlobalContext';
+import { GlobalContext } from './context/GlobalContext';
+import RecentTransactions from './components/Recent/RecentTransactions';
 
 function App() {
 
     const [active, setActive] = useState(1)
 
-    const global = useGlobalContext()
-    console.log(global);
-
+    const global = useContext(GlobalContext);
+    
     const loadBody = () => {
         switch(active){
             case 1:
               return <Dashboard />
             case 2:
-              return <Dashboard />
+              return <RecentTransactions />
             case 3:
               return <Income />
             case 4: 

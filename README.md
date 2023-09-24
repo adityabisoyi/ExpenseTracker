@@ -1,4 +1,4 @@
 # ExpenseTracker
 
-Working on the react components sidebar and incomes dashboard
+project is completed. Adding mongo Atlas is remaining;
 
